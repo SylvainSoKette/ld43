@@ -11,7 +11,7 @@ You can play the game [here](http://sokette.info/games/ld43/).
 ![Battlecraft](http://sokette.info/games/ld43/progress03.jpg)
 
 Lead your clan to greatness ! Just avoid being taken as slave by the demons...
-You'll have 4 ressources to manage, every choice consumme/add ressources
+You'll have 4 ressources to manage, every choice consumme/add ressources.
 
 ## How to play
 
