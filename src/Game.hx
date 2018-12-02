@@ -3,7 +3,6 @@ package;
 class SinusDeform extends hxsl.Shader {
 
 	static var SRC = {
-
 		@global var time : Float;
 		@param var speed : Float;
 		@param var frequency : Float;
@@ -15,7 +14,6 @@ class SinusDeform extends hxsl.Shader {
 		function fragment() {
 			calculatedUV.x += sin(absolutePosition.y * frequency + time * speed + absolutePosition.x * 0.1) * amplitude;
 		}
-
 	};
 
 	public function new( frequency = 10., amplitude = 0.01, speed = 1. ) {
@@ -24,7 +22,29 @@ class SinusDeform extends hxsl.Shader {
 		this.amplitude = amplitude;
 		this.speed = speed;
 	}
+}
 
+class ColorShader extends hxsl.Shader {
+
+	static var SRC = {
+		@:import h3d.shader.Base2d;
+
+		@param var speed : Float;
+		@param var frequency : Float;
+		@param var amplitude : Float;
+
+		function fragment() {
+			pixelColor.r = sin(pixelColor.r * amplitude * time);
+			pixelColor.g = sin(pixelColor.g * amplitude * time);
+			pixelColor.b = sin(pixelColor.b * amplitude * time);
+			pixelColor.a = pixelColor.a;
+		}
+	};
+
+	public function new( amplitude = 0.1 ) {
+		super();
+		this.amplitude = amplitude;
+	}
 }
 
 enum Defeat {
@@ -83,7 +103,7 @@ class Game extends hxd.App {
 		backgroundTile = hxd.Res.background.toTile();
 		background = new h2d.Bitmap(backgroundTile, scene);
 		background.filter = new h2d.filter.Bloom(1.0, .3, 2, 2);
-		gameShader = new SinusDeform();
+		gameShader = new ColorShader();
 		defeatShader = new SinusDeform();
 		// background.addShader(gameShader);
 
@@ -170,8 +190,8 @@ class Game extends hxd.App {
 	private function defeat(reason : Defeat ) {
 		lost = true;
 
-		// background.removeShader(gameShader);
 		background.addShader(defeatShader);
+		background.addShader(gameShader);
 		hud.show(false);
 		showEvent(false);
 
