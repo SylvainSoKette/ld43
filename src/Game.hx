@@ -108,8 +108,8 @@ class Game extends hxd.App {
 		defeatShader = new SinusDeform();
 		// background.addShader(gameShader);
 
-		mainTheme = hxd.Res.sfx.main;
-		mainTheme.play(true);
+		// mainTheme = hxd.Res.sfx.main;
+		// mainTheme.play(true);
 
 		hud = new HUD(scene);
 
@@ -194,7 +194,7 @@ class Game extends hxd.App {
 	private function defeat(reason : Defeat ) {
 		lost = true;
 
-		mainTheme.stop();
+		// mainTheme.stop();
 
 		background.addShader(defeatShader);
 		background.addShader(gameShader);

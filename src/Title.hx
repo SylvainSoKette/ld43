@@ -18,7 +18,7 @@ class Title extends hxd.App {
 		txt.dropShadow = { dx: 1, dy: 1, color: 1, alpha : 1.0 };
 		txt.setPosition(Reg.WIDTH / 2, Reg.HEIGHT - 16);
 
-		music = hxd.Res.sfx.wardrums;
+		music = hxd.Res.sfx.main;
 		music.play(true);
 
 		var i = new h2d.Interactive(Reg.WIDTH, Reg.HEIGHT, scene);
