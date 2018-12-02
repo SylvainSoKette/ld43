@@ -56,6 +56,7 @@ class Game extends hxd.App {
 	var hud : HUD;
 
 	var eventText : EventText;
+	// var lastEvent : Reg.Event;
 
 	var btnL : ChoiceButton;
 	var btnR : ChoiceButton;
@@ -152,12 +153,8 @@ class Game extends hxd.App {
 	}
 
 	private function getEvent() {
-		var event;
-		if (eventsDone == 0) {
-			event = EventManager.getTutorialEvent();
-		} else {
-			event = EventManager.getRandomEvent(eventsDone);
-		}
+		var event = EventManager.getRandomEvent(eventsDone);
+		// lastEvent = event;
 		eventText.setText(new hxd.UString(event.text));
 		if (event.img != null) {
 			scene.addChild(event.img);

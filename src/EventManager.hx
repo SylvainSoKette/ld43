@@ -1,17 +1,9 @@
 package;
 
-typedef Event = {
-	img : h2d.Bitmap,
-	req : Int,
-	text : hxd.UString,
-	btnL : { text : hxd.UString, actions : Array<{action : Reg.Action, value : Int}>, },
-	btnR : { text : hxd.UString, actions : Array<{action : Reg.Action, value : Int}>, },
-};
-
 class EventManager {
 
-	private static function getEvents() : Array<Event> {
-		var events : Array<Event> = [
+	private static function getEvents() : Array<Reg.Event> {
+		var events : Array<Reg.Event> = [
 			{
 				img : null,
 				req : 0,
@@ -263,7 +255,8 @@ class EventManager {
 				The neighbouring clan is invoking
 				a great demon, on a mobile device !
 				We are doomed !
-				
+				Don't we have mobile ??
+
 				Goz goz goz goz !",
 				btnL : {
 					text : "We crush mobile !",
@@ -274,7 +267,7 @@ class EventManager {
 					
 				},
 				btnR : {
-					text : "Don't you have mobile ?",
+					text : "Help them !",
 					actions : [
 						{action : Reg.Action.Demon, value : 25},
 					],
@@ -373,38 +366,56 @@ class EventManager {
 					],
 				},
 			},
+			{
+				img : null,
+				req : 20,
+				text : "Great leader,
+				We always need more slaves !",
+				btnL : {
+					text : "Raid a village.",
+					actions : [
+						{action : Reg.Action.Slave, value : 5},
+					],
+					
+				},
+				btnR : {
+					text : "Raid a fortress",
+					actions : [
+						{action : Reg.Action.Orc, value : -2},
+						{action : Reg.Action.Slave, value : 10},
+					],
+				},
+			},
 		];
 		return events;
 	}
 
-	public static function getTutorialEvent() : Event {
-		return {
-			img : null,
-			req : 0,
-			text : "Goz goz !
-				Trog-Dhur was killed in glorious battle !
-				Please take the command of our clan
-				and lead us !
-				Keep our ranks high,
-				Keep us strong and fed,
-				Bring us many slaves
-				and keep the demons away !
-				TO VICTORY !",
-			btnL : {
-				text : "You're annoying.",
-				actions : [{action : Reg.Action.Orc, value : -1}],
-			},
-			btnR : {
-				text : "Order a feast !",
-				actions : [{action : Reg.Action.Food, value : -5}],
-			},
-		};
-	}
-
-
-	public static function getRandomEvent(eventsDone) : Event {
-		var events : Array<Event> = EventManager.getEvents();
-		var filteredEvents : Array<Event> = [];
+	public static function getRandomEvent(eventsDone) : Reg.Event {
+		if (eventsDone == 0) {
+			return {
+				img : null,
+				req : 0,
+				text : "Goz goz !
+					Trog-Dhur was killed in glorious battle !
+					Please take the command of our clan
+					and lead us !
+					Keep our ranks high,
+					Keep us strong and fed,
+					Bring us many slaves
+					and keep the demons away !
+					TO VICTORY !",
+				btnL : {
+					text : "You're annoying.",
+					actions : [{action : Reg.Action.Orc, value : -1}],
+				},
+				btnR : {
+					text : "Order a feast !",
+					actions : [{action : Reg.Action.Food, value : -5}],
+				},
+			};
+		}
+		var events : Array<Reg.Event> = EventManager.getEvents();
+		var filteredEvents : Array<Reg.Event> = [];
 		for (event in events) {
 			if (event.req <= eventsDone) {
 				filteredEvents.push(event);
