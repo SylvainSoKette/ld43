@@ -1,0 +1,6 @@
+-cp src
+-main Game
+-lib heaps
+-D windowSize=540x540
+-dce full
+-D release
