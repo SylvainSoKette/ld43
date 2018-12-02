@@ -72,6 +72,7 @@ class Game extends hxd.App {
 	var backgroundTile : h2d.Tile;
 	var backgroundFilter : h2d.filter.Filter;
 	var background : h2d.Bitmap;
+	var mainTheme : hxd.res.Sound;
 
 	var hud : HUD;
 
@@ -106,6 +107,9 @@ class Game extends hxd.App {
 		gameShader = new ColorShader();
 		defeatShader = new SinusDeform();
 		// background.addShader(gameShader);
+
+		mainTheme = hxd.Res.sfx.main;
+		mainTheme.play(true);
 
 		hud = new HUD(scene);
 
@@ -189,6 +193,8 @@ class Game extends hxd.App {
 
 	private function defeat(reason : Defeat ) {
 		lost = true;
+
+		mainTheme.stop();
 
 		background.addShader(defeatShader);
 		background.addShader(gameShader);
