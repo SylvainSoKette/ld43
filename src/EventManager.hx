@@ -340,8 +340,25 @@ class EventManager {
 			{
 				img : null,
 				req : 0,
+				text : "A comet has been sighted",
+				btnL : {
+					text : "It's a sign.",
+					actions : [
+						{action : Reg.Action.Orc, value : -5},
+					],
+				},
+				btnR : {
+					text : "It's a sign.",
+					actions : [
+						{action : Reg.Action.Demon, value : 15},
+					],
+				},
+			},
+			{
+				img : null,
+				req : 0,
 				text : "Oh no !
-				It's a comet !!!!",
+				It's a meteor !!!!",
 				btnL : {
 					text : "We are doomed.",
 					actions : [
@@ -350,7 +367,7 @@ class EventManager {
 					
 				},
 				btnR : {
-					text : "Flee !",
+					text : "Panic !",
 					actions : [
 						{action : Reg.Action.Orc, value : -5},
 					],
@@ -365,17 +382,20 @@ class EventManager {
 			img : null,
 			req : 0,
 			text : "Goz goz !
-				Trog-Dhur was killed in glorious
-				battle !
+				Trog-Dhur was killed in glorious battle !
 				Please take the command of our clan
-				and lead us to great fights
-				and victory !",
+				and lead us !
+				Keep our ranks high,
+				Keep us strong and fed,
+				Bring us many slaves
+				and keep the demons away !
+				TO VICTORY !",
 			btnL : {
-				text : "Kill this prick",
+				text : "You're annoying.",
 				actions : [{action : Reg.Action.Orc, value : -1}],
 			},
 			btnR : {
-				text : "Order a feast",
+				text : "Order a feast !",
 				actions : [{action : Reg.Action.Food, value : -5}],
 			},
 		};

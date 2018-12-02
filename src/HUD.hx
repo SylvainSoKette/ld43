@@ -24,7 +24,7 @@ class HUD {
 		hudFoodTxt = new h2d.Text(font, parent);
 		hudSlavesIcon = new h2d.Bitmap(hudTiles.sub(48, 0, 16, 16), parent);
 		hudSlavesTxt = new h2d.Text(font, parent);
-		hudDemonIcon = new h2d.Bitmap(hudTiles.sub(0, 16, 16, 16), parent);
+		hudDemonIcon = new h2d.Bitmap(hudTiles.sub(16, 16, 16, 16), parent);
 		hudDemonTxt = new h2d.Text(font, parent);
 
 		elements = [
